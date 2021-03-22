@@ -33,12 +33,12 @@ public class PhysExamSearch {
         Scanner stdIn = new Scanner(System.in);
         PhyscData[] x = {
                 new PhyscData("박현규", 162, 0.3),
-                new PhyscData("함진아", 173, 0.7),
-                new PhyscData("최윤미", 175, 2.0),
-                new PhyscData("홍연의", 171, 1.5),
                 new PhyscData("이수진", 168, 0.4),
-                new PhyscData("김영준", 174, 1.2),
                 new PhyscData("박용규", 169, 0.8),
+                new PhyscData("홍연의", 171, 1.5),
+                new PhyscData("함진아", 173, 0.7),
+                new PhyscData("김영준", 174, 1.2),
+                new PhyscData("최윤미", 175, 2.0),
         };
         System.out.print("몇 cm인 사람을 찾고 있나요? : ");
         int height = stdIn.nextInt();
