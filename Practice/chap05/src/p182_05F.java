@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class p182_05 {
+public class p182_05F {
     static void recur3(int n) {
         if (n > 0) {
             recur3(n - 1);

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class p182_07 {
+public class p182_07F {
     static void move(int no, int x, int y) {
         if (no > 1)
             move(no - 1, x, 6 - x - y);
@@ -14,32 +14,27 @@ public class p182_07 {
         IntStack sNo = new IntStack(no);
         IntStack sX = new IntStack(no);
         IntStack sY = new IntStack(no);
-        while (true){
+        while (true) {
             if (no > 1) {
-                System.out.println("push no : " + no + " x : " + x + " y : " + y);
-                sNo.push(no--);
+                sNo.push(--no);
                 sX.push(x);
                 sY.push(y);
+                y = 6 - x - y;
                 continue;
             }
-            while (true) {
-                // while no == no(init) - 1
+            // no == 1;
+            System.out.println("Move " + no + "'th plate from " + x + " to " + y);
+            if (!sNo.isEmpty()) {
+                int noTemp = no;
+                int xTemp = x;
+                int yTemp = y;
+                no = sNo.pop();
+                x = sX.pop();
+                y = sY.pop();
                 System.out.println("Move " + no + "'th plate from " + x + " to " + y);
-                System.out.println("Move " + (no + 1) + "'th plate from " + x + " to " + (6 - x - y));
-                System.out.println("Move " + no + "'th plate from " + y + " to " + x);
-                System.out.println("Move " + (no + 1) + "'th plate from " + (6 - x - y) + " to " + y);
-                if (!sNo.isEmpty()) { // no == 1;
-                    no = sNo.pop();
-                    x = sX.pop();
-                    y = sY.pop();
-                    x = 6 - x - y;
-                    y = 6 - x - y;
-
-//                    System.out.println("no : " + no + " x : " + x + " y : " + y);
-                    continue;
-                }
-                break;
+                System.out.println("Move " + noTemp + "'th plate from " + yTemp + " to " + (6 - xTemp - yTemp));
             }
+
             break;
         }
     }
@@ -63,21 +58,21 @@ public class p182_07 {
             ;
         }
 
-        public int push(int x) throws p182_07.IntStack.OverflowIntStackException {
+        public int push(int x) throws p182_07F.IntStack.OverflowIntStackException {
             if (ptr >= max)
-                throw new p182_07.IntStack.OverflowIntStackException();
+                throw new p182_07F.IntStack.OverflowIntStackException();
             return stk[ptr++] = x;
         }
 
-        public int pop() throws p182_07.IntStack.EmptyIntStackException {
+        public int pop() throws p182_07F.IntStack.EmptyIntStackException {
             if (ptr <= 0)
-                throw new p182_07.IntStack.EmptyIntStackException();
+                throw new p182_07F.IntStack.EmptyIntStackException();
             return stk[--ptr];
         }
 
-        public int peek() throws p182_07.IntStack.EmptyIntStackException {
+        public int peek() throws p182_07F.IntStack.EmptyIntStackException {
             if (ptr <= 0)
-                throw new p182_07.IntStack.EmptyIntStackException();
+                throw new p182_07F.IntStack.EmptyIntStackException();
             return stk[ptr - 1];
         }
 
