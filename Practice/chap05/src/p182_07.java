@@ -15,22 +15,30 @@ public class p182_07 {
         IntStack sX = new IntStack(no);
         IntStack sY = new IntStack(no);
         while (true){
-            if(no > 1){
-                y = 6 - x - y;
-                sNo.push(--no);
+            if (no > 1) {
+                System.out.println("push no : " + no + " x : " + x + " y : " + y);
+                sNo.push(no--);
                 sX.push(x);
                 sY.push(y);
                 continue;
             }
-            if (!sNo.isEmpty()){
-                no = sNo.pop();
-                x = sX.pop();
-                y = sY.pop();
+            while (true) {
+                // while no == no(init) - 1
                 System.out.println("Move " + no + "'th plate from " + x + " to " + y);
-                x = 6 - x - y;
-                y = 6 - x - y;
-                System.out.println("no : "+ no+ " x : " + x + " y : " + y);
-                continue;
+                System.out.println("Move " + (no + 1) + "'th plate from " + x + " to " + (6 - x - y));
+                System.out.println("Move " + no + "'th plate from " + y + " to " + x);
+                System.out.println("Move " + (no + 1) + "'th plate from " + (6 - x - y) + " to " + y);
+                if (!sNo.isEmpty()) { // no == 1;
+                    no = sNo.pop();
+                    x = sX.pop();
+                    y = sY.pop();
+                    x = 6 - x - y;
+                    y = 6 - x - y;
+
+//                    System.out.println("no : " + no + " x : " + x + " y : " + y);
+                    continue;
+                }
+                break;
             }
             break;
         }
