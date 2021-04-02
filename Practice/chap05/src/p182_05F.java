@@ -1,3 +1,5 @@
+import com.sun.tools.jconsole.JConsoleContext;
+
 import java.util.Scanner;
 
 public class p182_05F {
@@ -10,26 +12,31 @@ public class p182_05F {
     }
 
     static void recurX3(int n) {
-        IntStack s = new IntStack(n);
+        IntStack s1 = new IntStack(n);
+        IntStack s2 = new IntStack(n);
 
         while (true) {
-            if (n > 0) {
-//                System.out.println("push "+n+" to s");
-                s.push(n--);
-                continue;
-            }
-            if (!s.isEmpty()) {
-                n = s.pop();
-//                System.out.println("pop "+n+" from s");
+            if (s2.isEmpty()) {
+                if (n > 0) {
+                    s1.push(n);
+                    n--;
+                    continue;
+                }
+            } else {
                 System.out.print(n + " ");
-                n--;
+                n = s2.pop();
                 continue;
             }
-            while (!s.isEmpty()){
-                int i = s.pop();
-                System.out.print(i + " ");
+            if (s1.isEmpty()) {
+                break;
             }
-            break;
+            n = s1.pop();
+            if (s2.isEmpty()) {
+                s2.push(n - 2);
+            } else {
+                n = s2.pop();
+            }
+            continue;
         }
     }
 
